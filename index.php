@@ -1,35 +1,16 @@
-// Hacemos un arreglo con datos de ejemplo
-$data = [
-    'title' => 'Untitled-1',
-    'created' => '2015-01-01',
-    'modified' => '2015-01-01',
-    'id' => '1',
-    'name' => 'Practica 1',
-    ]
+<?php
+// Obtener la ruta del archivo index.html en la misma ubicación
+$indexFilePath = __DIR__ . '/index.html';
 
-echo "
-    <!-- Make a Table for the Data -->
-        <table class='table table-striped table-bordered table-hover'>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Value</th>
-            </tr>
-        </thead>
-        <tbody>
-";
-
-// Para cada elemento del arreglo colocamos una fila
-foreach($data as $key => $value){
-    echo "
-            <tr>
-                <td>$key</td>
-                <td>$value</td>
-            </tr>
-        ";
+// Verificar si el archivo existe
+if (file_exists($indexFilePath)) {
+    // Leer el contenido del archivo index.html
+    $indexContent = file_get_contents($indexFilePath);
+    
+    // Imprimir el contenido del archivo en el navegador
+    echo $indexContent;
+} else {
+    // Mostrar un mensaje de error si el archivo no se encuentra
+    echo "El archivo index.html no se encontró en la ubicación especificada.";
 }
-echo "
-        </tbody>
-    </table>
-";
 ?>
